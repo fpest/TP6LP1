@@ -42,6 +42,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMnBuscarCliente = new javax.swing.JMenuItem();
         jMnBorrarCliente = new javax.swing.JMenuItem();
         jMnDirectorio = new javax.swing.JMenu();
+        jMnBuscarClientesPorCiudad = new javax.swing.JMenuItem();
         jMCiudades = new javax.swing.JMenu();
         jMnAgregarCiudad = new javax.swing.JMenuItem();
         jMnSalir = new javax.swing.JMenu();
@@ -99,6 +100,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMnCliente);
 
         jMnDirectorio.setText("Directorio");
+
+        jMnBuscarClientesPorCiudad.setText("Buscar Clientes por Ciudad");
+        jMnBuscarClientesPorCiudad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMnBuscarClientesPorCiudadActionPerformed(evt);
+            }
+        });
+        jMnDirectorio.add(jMnBuscarClientesPorCiudad);
+
         jMenuBar1.add(jMnDirectorio);
 
         jMCiudades.setText("Ciudades");
@@ -193,7 +203,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void jMnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnBuscarClienteActionPerformed
 
-        frm_BuscarClientes vBuscarClientes = new frm_BuscarClientes();
+        frm_BuscarCliente vBuscarClientes = new frm_BuscarCliente();
         escritorio.removeAll();
         escritorio.repaint();
         
@@ -211,6 +221,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
         escritorio.add(vBorrarCliente);
 
     }//GEN-LAST:event_jMnBorrarClienteActionPerformed
+
+    private void jMnBuscarClientesPorCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnBuscarClientesPorCiudadActionPerformed
+        
+        frm_BuscarClientesDirectorio vBuscarClientesDirectorio = new frm_BuscarClientesDirectorio();
+        escritorio.removeAll();
+        escritorio.repaint();
+        
+        vBuscarClientesDirectorio.setVisible(true);
+        escritorio.add(vBuscarClientesDirectorio);
+        
+        
+        
+        
+    }//GEN-LAST:event_jMnBuscarClientesPorCiudadActionPerformed
 
    
     public static void main(String args[]) {
@@ -254,6 +278,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMnAgregarCliente;
     private javax.swing.JMenuItem jMnBorrarCliente;
     private javax.swing.JMenuItem jMnBuscarCliente;
+    private javax.swing.JMenuItem jMnBuscarClientesPorCiudad;
     private javax.swing.JMenu jMnCliente;
     private javax.swing.JMenu jMnDirectorio;
     private javax.swing.JMenu jMnSalir;

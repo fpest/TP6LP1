@@ -165,11 +165,8 @@ public class frm_BorrarCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jLstListaDniValueChanged
 
     private void llenarTabla(Long telefono, Cliente cliente){
-    
-      
         DefaultTableModel model = (DefaultTableModel) jTblClienteBorrar.getModel();
         model.addRow(new Object[]{cliente.getDni(),cliente.getApellido(),cliente.getNombre(),cliente.getDireccion(),cliente.getCiudad(),telefono});
-        
     };
     
     private void limpiarCampos(){

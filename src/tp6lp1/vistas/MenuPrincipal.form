@@ -56,6 +56,16 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Directorio"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMnBuscarClientesPorCiudad">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Buscar Clientes por Ciudad"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMnBuscarClientesPorCiudadActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMCiudades">
           <Properties>

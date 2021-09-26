@@ -9,23 +9,23 @@ import tp6lp1.Cliente;
 
 
 
-public class frm_BuscarClientes extends javax.swing.JInternalFrame {
+public class frm_BuscarCliente extends javax.swing.JInternalFrame {
 
-    public frm_BuscarClientes() {
+    public frm_BuscarCliente() {
         initComponents();
         llenarListaTelefonos();
     }
 
 private void limpiarCampos(){
 
+    jTxtTelefono.setText("");
     jTxtDni.setText("");
     jTxtApellido.setText("");
     jTxtNombre.setText("");
     jTxtCiudad.setText("");
     jTxtDomicilio.setText("");
-
-
 };    
+
 private void llenarDatosCliente(long telefonoCliente){
 
     Cliente cliente;

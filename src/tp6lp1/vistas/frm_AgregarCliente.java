@@ -193,18 +193,40 @@ public class frm_AgregarCliente extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private boolean validarCampos(){
-        String val = "[0-9]*";
-        if (!jTxtDni.getText().matches(val)){
+
+        try{
+            int modelo=Integer.parseInt(jTxtDni.getText());
+        }catch(NumberFormatException nf){
             JOptionPane.showMessageDialog(null, "Debe ingresar sólo números en el campo DNI.");
             jTxtDni.requestFocus();
             return false;
-        } 
-        if (!jTxtTelefono.getText().matches(val)){
+        };
+
+
+
+//        String val = "[0-9]*";
+//        if (!jTxtDni.getText().matches(val)){
+//            JOptionPane.showMessageDialog(null, "Debe ingresar sólo números en el campo DNI.");
+//            jTxtDni.requestFocus();
+//            return false;
+//        } 
+       
+        try{
+            int modelo=Integer.parseInt(jTxtTelefono.getText());
+        }catch(NumberFormatException nf){
             JOptionPane.showMessageDialog(null, "Debe ingresar sólo números en el campo Teléfono.");
             jTxtTelefono.requestFocus();
             return false;
-        } 
-        
+        };
+
+
+
+//        if (!jTxtTelefono.getText().matches(val)){
+//            JOptionPane.showMessageDialog(null, "Debe ingresar sólo números en el campo Teléfono.");
+//            jTxtTelefono.requestFocus();
+//            return false;
+//        } 
+//        
         if (    jTxtDni.getText().equals("") ||
                 jTxtTelefono.getText().equals("") ||
                 jTxtNombre.getText().equals("") ||
