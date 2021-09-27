@@ -143,7 +143,6 @@ public class frm_BuscarClientesDirectorio extends javax.swing.JInternalFrame {
     for (Map.Entry<Long,Cliente> e: MenuPrincipal.getDirectorio().getDirectorio().entrySet()) {
         
         Ciudad ciudad = e.getValue().getCiudad();
-        System.out.println("adntro" + ciudad.toString());
         if (ciudad.equals(jCbCiudad.getSelectedItem())){
             System.out.println(e.getValue().getApellido());
             llenarTabla(Long.parseLong(e.getKey().toString()), e.getValue());

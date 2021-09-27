@@ -177,11 +177,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMnAgregarClienteActionPerformed
 
     private void jMnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnSalirActionPerformed
-      
+    
     }//GEN-LAST:event_jMnSalirActionPerformed
 
     private void jMnSalirMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMnSalirMenuSelected
-      System.exit(0);
+ System.exit(0);      
     }//GEN-LAST:event_jMnSalirMenuSelected
 
     private void jMnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnClienteActionPerformed

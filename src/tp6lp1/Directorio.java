@@ -1,5 +1,6 @@
 package tp6lp1;
 
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -69,6 +70,23 @@ private Map<Long,Cliente> directorio;
         return null;
   }
    
+   
+   public void borrarCliente(long dni){
+
+       Collection valores = MenuPrincipal.getDirectorio().getDirectorio().values();
+       Iterator it = valores.iterator();
+       while (it.hasNext()){
+        
+       Cliente valor = (Cliente) it.next();
+       if (valor.getDni()== dni){
+           it.remove();
+       }
+       JOptionPane.showMessageDialog(null, "Se eliminaron el/los registros.");
+       
+
+    }
+       
+}
    
    
 }

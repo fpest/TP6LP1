@@ -11,7 +11,7 @@ import tp6lp1.Cliente;
 
 public class frm_BuscarCliente extends javax.swing.JInternalFrame {
 
-    public frm_BuscarCliente() {
+public frm_BuscarCliente() {
         initComponents();
         llenarListaTelefonos();
     }
@@ -30,7 +30,7 @@ private void llenarDatosCliente(long telefonoCliente){
 
     Cliente cliente;
     cliente = MenuPrincipal.getDirectorio().buscarCliente(telefonoCliente);
-    jTxtTelefono.setText(String.valueOf(telefonoCliente));
+    
     jTxtDni.setText(String.valueOf(cliente.getDni()));
     jTxtApellido.setText(cliente.getApellido());
     jTxtNombre.setText(cliente.getNombre());
@@ -50,7 +50,7 @@ private void llenarListaTelefonos(){
         
         for (Long telefono : MenuPrincipal.getDirectorio().getDirectorio().keySet()) {
         
-            if (telefono.toString().contains(jTxtTelefono_Dni.getText())){
+            if (telefono.toString().contains(jTxtTelefono.getText())){
             telefonos[i]= telefono.toString();
             i++;
             }
@@ -63,39 +63,14 @@ private void llenarListaTelefonos(){
     });
 }
 
-private void llenarListaDni(){
-
-    int largoMapa = MenuPrincipal.getDirectorio().getDirectorio().size();
-    String[] dniA = new String[largoMapa];
-    int i=0;
-        jLstListaTelefonos.removeAll();
-        
-        for (Map.Entry<Long,Cliente> e: MenuPrincipal.getDirectorio().getDirectorio().entrySet()) {
-            Long dni = e.getValue().getDni();
-            if (dni.toString().contains(jTxtTelefono_Dni.getText())){
-            dniA[i]= dni.toString();
-            i++;
-            }
-      }
-        
-    jLstListaTelefonos.setModel(new javax.swing.AbstractListModel<String>() {
-    public int getSize() { return dniA.length; }
-    public String getElementAt(int i) { return dniA[i]; }
-
-    });
-}
-    
- 
-    @SuppressWarnings("unchecked")
+@SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jLstListaTelefonos = new javax.swing.JList<>();
-        jLabel2 = new javax.swing.JLabel();
-        jTxtTelefono_Dni = new javax.swing.JTextField();
+        jTxtTelefono = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -107,10 +82,7 @@ private void llenarListaDni(){
         jTxtCiudad = new javax.swing.JTextField();
         jTxtDomicilio = new javax.swing.JTextField();
         jBtnSalir = new javax.swing.JButton();
-        jTxtTelefono = new javax.swing.JTextField();
-        jLblTelefono_Dni = new javax.swing.JLabel();
-        jRbtnTelefono = new javax.swing.JRadioButton();
-        jRbtnDni = new javax.swing.JRadioButton();
+        jLblTelefono = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Búsqueda de Clientes");
@@ -122,23 +94,20 @@ private void llenarListaDni(){
         });
         jScrollPane2.setViewportView(jLstListaTelefonos);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel2.setText("Teléfono:");
-
-        jTxtTelefono_Dni.addFocusListener(new java.awt.event.FocusAdapter() {
+        jTxtTelefono.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTxtTelefono_DniFocusGained(evt);
+                jTxtTelefonoFocusGained(evt);
             }
         });
-        jTxtTelefono_Dni.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTxtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTxtTelefono_DniKeyPressed(evt);
+                jTxtTelefonoKeyPressed(evt);
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTxtTelefono_DniKeyReleased(evt);
+                jTxtTelefonoKeyReleased(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTxtTelefono_DniKeyTyped(evt);
+                jTxtTelefonoKeyTyped(evt);
             }
         });
 
@@ -179,42 +148,8 @@ private void llenarListaDni(){
             }
         });
 
-        jTxtTelefono.setEditable(false);
-        jTxtTelefono.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTxtTelefonoActionPerformed(evt);
-            }
-        });
-
-        jLblTelefono_Dni.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLblTelefono_Dni.setText("Teléfono:");
-
-        buttonGroup.add(jRbtnTelefono);
-        jRbtnTelefono.setSelected(true);
-        jRbtnTelefono.setText("Buscar por Teléfono");
-        jRbtnTelefono.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jRbtnTelefonoStateChanged(evt);
-            }
-        });
-        jRbtnTelefono.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRbtnTelefonoActionPerformed(evt);
-            }
-        });
-
-        buttonGroup.add(jRbtnDni);
-        jRbtnDni.setText("Buscar por DNI");
-        jRbtnDni.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jRbtnDniStateChanged(evt);
-            }
-        });
-        jRbtnDni.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRbtnDniActionPerformed(evt);
-            }
-        });
+        jLblTelefono.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLblTelefono.setText("Teléfono:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -230,31 +165,30 @@ private void llenarListaDni(){
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jBtnSalir))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLblTelefono_Dni)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(296, 296, 296)
+                                .addComponent(jLabel6))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLblTelefono)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTxtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jRbtnDni)
-                                    .addComponent(jTxtTelefono_Dni, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jRbtnTelefono))))
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jTxtCiudad, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTxtNombre, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTxtApellido, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTxtDni, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTxtTelefono, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTxtDomicilio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(79, 79, 79))
         );
@@ -266,10 +200,6 @@ private void llenarListaDni(){
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jTxtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTxtDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
@@ -284,24 +214,20 @@ private void llenarListaDni(){
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTxtCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTxtDomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6)))
+                            .addComponent(jLabel5)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jRbtnTelefono)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRbtnDni)
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTxtTelefono_Dni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLblTelefono_Dni))
+                            .addComponent(jTxtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLblTelefono))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTxtDomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(58, 58, 58)
                 .addComponent(jBtnSalir)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
@@ -315,86 +241,42 @@ private void llenarListaDni(){
          this.dispose();
     }//GEN-LAST:event_jBtnSalirActionPerformed
 
-    private void jTxtTelefono_DniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtTelefono_DniKeyTyped
+    private void jTxtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtTelefonoKeyTyped
        
-    }//GEN-LAST:event_jTxtTelefono_DniKeyTyped
+    }//GEN-LAST:event_jTxtTelefonoKeyTyped
 
-    private void jTxtTelefono_DniKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtTelefono_DniKeyPressed
+    private void jTxtTelefonoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtTelefonoKeyPressed
         
-    }//GEN-LAST:event_jTxtTelefono_DniKeyPressed
+    }//GEN-LAST:event_jTxtTelefonoKeyPressed
 
-    private void jTxtTelefono_DniKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtTelefono_DniKeyReleased
-llenarListaTelefonos();
-    }//GEN-LAST:event_jTxtTelefono_DniKeyReleased
+    private void jTxtTelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtTelefonoKeyReleased
+        llenarListaTelefonos();
+    }//GEN-LAST:event_jTxtTelefonoKeyReleased
 
     private void jLstListaTelefonosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jLstListaTelefonosValueChanged
-         jTxtTelefono_Dni.setText(jLstListaTelefonos.getSelectedValue()); 
          
-         if (jRbtnTelefono.isSelected()){         
-            llenarDatosCliente(Long.parseLong(jLstListaTelefonos.getSelectedValue()));}
-         else{
-         
-            for (Map.Entry<Long,Cliente> e: MenuPrincipal.getDirectorio().getDirectorio().entrySet()) {
-                Long dni = e.getValue().getDni();
-            if (dni.toString().equals(jLstListaTelefonos.getSelectedValue())){
-            llenarDatosCliente(Long.parseLong(e.getKey().toString()));
-            }
-      }
-             
-             
-         }
+        if (!jLstListaTelefonos.isSelectionEmpty()){
+        jTxtTelefono.setText(jLstListaTelefonos.getSelectedValue()); 
+        llenarDatosCliente(Long.parseLong(jLstListaTelefonos.getSelectedValue()));
+        }
     }//GEN-LAST:event_jLstListaTelefonosValueChanged
 
-    private void jTxtTelefono_DniFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTxtTelefono_DniFocusGained
+    private void jTxtTelefonoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTxtTelefonoFocusGained
        limpiarCampos();
-    }//GEN-LAST:event_jTxtTelefono_DniFocusGained
-
-    private void jTxtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtTelefonoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTxtTelefonoActionPerformed
-
-    private void jRbtnDniStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jRbtnDniStateChanged
-       
-    }//GEN-LAST:event_jRbtnDniStateChanged
-
-    private void jRbtnTelefonoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jRbtnTelefonoStateChanged
-        
-    }//GEN-LAST:event_jRbtnTelefonoStateChanged
-
-    private void jRbtnTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRbtnTelefonoActionPerformed
-        jTxtTelefono_Dni.setText("");
-        if (jRbtnTelefono.isSelected()){
-            jLblTelefono_Dni.setText("Telefono:");
-            llenarListaTelefonos();
-        }else{llenarListaDni();
-            jLblTelefono_Dni.setText("        DNI:");}
-    }//GEN-LAST:event_jRbtnTelefonoActionPerformed
-
-    private void jRbtnDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRbtnDniActionPerformed
-        
-        jTxtTelefono_Dni.setText("");
-        if (jRbtnDni.isSelected()){
-            jLblTelefono_Dni.setText("        DNI:");
-            llenarListaDni();
-        }else{llenarListaTelefonos();
-        jLblTelefono_Dni.setText("Telefono:");}
-    }//GEN-LAST:event_jRbtnDniActionPerformed
+       llenarListaTelefonos();
+    }//GEN-LAST:event_jTxtTelefonoFocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup;
     private javax.swing.JButton jBtnSalir;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLblTelefono_Dni;
+    private javax.swing.JLabel jLblTelefono;
     private javax.swing.JList<String> jLstListaTelefonos;
-    private javax.swing.JRadioButton jRbtnDni;
-    private javax.swing.JRadioButton jRbtnTelefono;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTxtApellido;
     private javax.swing.JTextField jTxtCiudad;
@@ -402,6 +284,5 @@ llenarListaTelefonos();
     private javax.swing.JTextField jTxtDomicilio;
     private javax.swing.JTextField jTxtNombre;
     private javax.swing.JTextField jTxtTelefono;
-    private javax.swing.JTextField jTxtTelefono_Dni;
     // End of variables declaration//GEN-END:variables
 }
