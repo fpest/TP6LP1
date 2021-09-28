@@ -5,7 +5,7 @@ import tp6lp1.Ciudad;
 import tp6lp1.clasesdata.CiudadesData;
 
 public class frm_AgregarCiudad extends javax.swing.JInternalFrame {
-     
+
     public frm_AgregarCiudad() {
         initComponents();
     }
@@ -87,9 +87,10 @@ public class frm_AgregarCiudad extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnGuardarActionPerformed
-        if (!jTxtNombreCiudad.getText().equals("")){
-        MenuPrincipal.getcData().agregarCiudad(new Ciudad(jTxtNombreCiudad.getText()));
-        jTxtNombreCiudad.setText("");}else{
+        if (!jTxtNombreCiudad.getText().equals("")) {
+            MenuPrincipal.getcData().agregarCiudad(new Ciudad(jTxtNombreCiudad.getText()));
+            jTxtNombreCiudad.setText("");
+        } else {
             JOptionPane.showMessageDialog(null, "Debe ingresar el nombre de una ciudad.");
         }
 
@@ -97,7 +98,6 @@ public class frm_AgregarCiudad extends javax.swing.JInternalFrame {
 
     private void jTxtNombreCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtNombreCiudadActionPerformed
 
-        
 
     }//GEN-LAST:event_jTxtNombreCiudadActionPerformed
 

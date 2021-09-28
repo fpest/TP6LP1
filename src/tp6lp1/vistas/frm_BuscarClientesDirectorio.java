@@ -133,44 +133,39 @@ public class frm_BuscarClientesDirectorio extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSalirActionPerformed
-            dispose();
+        dispose();
     }//GEN-LAST:event_jBtnSalirActionPerformed
 
     private void jCbCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCbCiudadActionPerformed
         limpiarCampos();
-                         
-        
-    for (Map.Entry<Long,Cliente> e: MenuPrincipal.getDirectorio().getDirectorio().entrySet()) {
-        
-        Ciudad ciudad = e.getValue().getCiudad();
-        if (ciudad.equals(jCbCiudad.getSelectedItem())){
-            System.out.println(e.getValue().getApellido());
-            llenarTabla(Long.parseLong(e.getKey().toString()), e.getValue());
+
+        for (Map.Entry<Long, Cliente> e : MenuPrincipal.getDirectorio().getDirectorio().entrySet()) {
+
+            Ciudad ciudad = e.getValue().getCiudad();
+            if (ciudad.equals(jCbCiudad.getSelectedItem())) {
+                llenarTabla(Long.parseLong(e.getKey().toString()), e.getValue());
+            }
         }
-    }
     }//GEN-LAST:event_jCbCiudadActionPerformed
 
-    private void llenarComboCiudades(){
-      jCbCiudad.removeAll();
+    private void llenarComboCiudades() {
+        jCbCiudad.removeAll();
         for (Ciudad ciudad : MenuPrincipal.getcData().obtenerCiudades()) {
-                jCbCiudad.addItem(ciudad);    
-      }
-    } 
-    
-    
-    
-    
-    
-    private void llenarTabla(Long telefono, Cliente cliente){
-        
-     
+            jCbCiudad.addItem(ciudad);
+        }
+    }
+
+    private void llenarTabla(Long telefono, Cliente cliente) {
+
         DefaultTableModel model = (DefaultTableModel) jTblClientesPorCiudad.getModel();
-        model.addRow(new Object[]{cliente.getDni(),cliente.getApellido(),cliente.getNombre(),cliente.getDireccion(),cliente.getCiudad(),telefono});
-    };
+        model.addRow(new Object[]{cliente.getDni(), cliente.getApellido(), cliente.getNombre(), cliente.getDireccion(), cliente.getCiudad(), telefono});
+    }
+
+    ;
     
-    private void limpiarCampos(){
+    private void limpiarCampos() {
         DefaultTableModel model = (DefaultTableModel) jTblClientesPorCiudad.getModel();
-         model.setRowCount(0);
+        model.setRowCount(0);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

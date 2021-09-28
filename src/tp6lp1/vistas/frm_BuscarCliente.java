@@ -1,69 +1,71 @@
-
 package tp6lp1.vistas;
-
 
 import static java.lang.Long.parseLong;
 import java.lang.reflect.Array;
 import java.util.Map;
 import tp6lp1.Cliente;
 
-
-
 public class frm_BuscarCliente extends javax.swing.JInternalFrame {
 
-public frm_BuscarCliente() {
+    public frm_BuscarCliente() {
         initComponents();
         llenarListaTelefonos();
     }
 
-private void limpiarCampos(){
+    private void limpiarCampos() {
 
-    jTxtTelefono.setText("");
-    jTxtDni.setText("");
-    jTxtApellido.setText("");
-    jTxtNombre.setText("");
-    jTxtCiudad.setText("");
-    jTxtDomicilio.setText("");
-};    
+        jTxtTelefono.setText("");
+        jTxtDni.setText("");
+        jTxtApellido.setText("");
+        jTxtNombre.setText("");
+        jTxtCiudad.setText("");
+        jTxtDomicilio.setText("");
+    }
 
-private void llenarDatosCliente(long telefonoCliente){
+    ;    
 
-    Cliente cliente;
-    cliente = MenuPrincipal.getDirectorio().buscarCliente(telefonoCliente);
-    
-    jTxtDni.setText(String.valueOf(cliente.getDni()));
-    jTxtApellido.setText(cliente.getApellido());
-    jTxtNombre.setText(cliente.getNombre());
-    jTxtCiudad.setText(cliente.getCiudad().toString());
-    jTxtDomicilio.setText(cliente.getDireccion());
+private void llenarDatosCliente(long telefonoCliente) {
 
+        Cliente cliente;
+        cliente = MenuPrincipal.getDirectorio().buscarCliente(telefonoCliente);
 
+        jTxtDni.setText(String.valueOf(cliente.getDni()));
+        jTxtApellido.setText(cliente.getApellido());
+        jTxtNombre.setText(cliente.getNombre());
+        jTxtCiudad.setText(cliente.getCiudad().toString());
+        jTxtDomicilio.setText(cliente.getDireccion());
 
-}   
-private void llenarListaTelefonos(){
+    }
 
-    int largoMapa = MenuPrincipal.getDirectorio().getDirectorio().size();
-    String[] telefonos = new String[largoMapa];
-    int i=0;
-        
+    private void llenarListaTelefonos() {
+
+        int largoMapa = MenuPrincipal.getDirectorio().getDirectorio().size();
+        String[] telefonos = new String[largoMapa];
+        int i = 0;
+
         jLstListaTelefonos.removeAll();
-        
+
         for (Long telefono : MenuPrincipal.getDirectorio().getDirectorio().keySet()) {
-        
-            if (telefono.toString().contains(jTxtTelefono.getText())){
-            telefonos[i]= telefono.toString();
-            i++;
+
+            if (telefono.toString().contains(jTxtTelefono.getText())) {
+                telefonos[i] = telefono.toString();
+                i++;
             }
-      }
-        
-    jLstListaTelefonos.setModel(new javax.swing.AbstractListModel<String>() {
-    public int getSize() { return telefonos.length; }
-    public String getElementAt(int i) { return telefonos[i]; }
+        }
 
-    });
-}
+        jLstListaTelefonos.setModel(new javax.swing.AbstractListModel<String>() {
+            public int getSize() {
+                return telefonos.length;
+            }
 
-@SuppressWarnings("unchecked")
+            public String getElementAt(int i) {
+                return telefonos[i];
+            }
+
+        });
+    }
+
+    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -238,15 +240,15 @@ private void llenarListaTelefonos(){
     }//GEN-LAST:event_jTxtDniActionPerformed
 
     private void jBtnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSalirActionPerformed
-         this.dispose();
+        this.dispose();
     }//GEN-LAST:event_jBtnSalirActionPerformed
 
     private void jTxtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtTelefonoKeyTyped
-       
+
     }//GEN-LAST:event_jTxtTelefonoKeyTyped
 
     private void jTxtTelefonoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtTelefonoKeyPressed
-        
+
     }//GEN-LAST:event_jTxtTelefonoKeyPressed
 
     private void jTxtTelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtTelefonoKeyReleased
@@ -254,16 +256,16 @@ private void llenarListaTelefonos(){
     }//GEN-LAST:event_jTxtTelefonoKeyReleased
 
     private void jLstListaTelefonosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jLstListaTelefonosValueChanged
-         
-        if (!jLstListaTelefonos.isSelectionEmpty()){
-        jTxtTelefono.setText(jLstListaTelefonos.getSelectedValue()); 
-        llenarDatosCliente(Long.parseLong(jLstListaTelefonos.getSelectedValue()));
+
+        if (!jLstListaTelefonos.isSelectionEmpty()) {
+            jTxtTelefono.setText(jLstListaTelefonos.getSelectedValue());
+            llenarDatosCliente(Long.parseLong(jLstListaTelefonos.getSelectedValue()));
         }
     }//GEN-LAST:event_jLstListaTelefonosValueChanged
 
     private void jTxtTelefonoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTxtTelefonoFocusGained
-       limpiarCampos();
-       llenarListaTelefonos();
+        limpiarCampos();
+        llenarListaTelefonos();
     }//GEN-LAST:event_jTxtTelefonoFocusGained
 
 

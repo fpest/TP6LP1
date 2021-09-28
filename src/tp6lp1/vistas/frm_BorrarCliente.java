@@ -167,7 +167,7 @@ public class frm_BorrarCliente extends javax.swing.JInternalFrame {
 
     private void jLstListaDniValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jLstListaDniValueChanged
         limpiarCampos();
-
+        
         if (!jLstListaDni.isSelectionEmpty()) {
             jTxtDni.setText(jLstListaDni.getSelectedValue());
             for (Map.Entry<Long, Cliente> e : MenuPrincipal.getDirectorio().getDirectorio().entrySet()) {
@@ -178,25 +178,30 @@ public class frm_BorrarCliente extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_jLstListaDniValueChanged
-
+    
     private void llenarTabla(Long telefono, Cliente cliente) {
         DefaultTableModel model = (DefaultTableModel) jTblClienteBorrar.getModel();
         model.addRow(new Object[]{cliente.getDni(), cliente.getApellido(), cliente.getNombre(), cliente.getDireccion(), cliente.getCiudad(), telefono});
-    };
+    }
+
+    ;
     
     private void limpiarCampos() {
+        jTxtDni.setText("");
         DefaultTableModel model = (DefaultTableModel) jTblClienteBorrar.getModel();
         model.setRowCount(0);
+        
+    }
 
-    };
+    ;
       
     private void llenarListaDni() {
-
+        
         int largoMapa = MenuPrincipal.getDirectorio().getDirectorio().size();
         String[] dniA = new String[largoMapa];
         int i = 0;
         jLstListaDni.removeAll();
-
+        
         for (Map.Entry<Long, Cliente> e : MenuPrincipal.getDirectorio().getDirectorio().entrySet()) {
             Long dni = e.getValue().getDni();
             if (dni.toString().contains(jTxtDni.getText())) {
@@ -204,16 +209,16 @@ public class frm_BorrarCliente extends javax.swing.JInternalFrame {
                 i++;
             }
         }
-
+        
         jLstListaDni.setModel(new javax.swing.AbstractListModel<String>() {
             public int getSize() {
                 return dniA.length;
             }
-
+            
             public String getElementAt(int i) {
                 return dniA[i];
             }
-
+            
         });
     }
 
@@ -238,7 +243,7 @@ public class frm_BorrarCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBtnSalirActionPerformed
 
     private void jBtnBorrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnBorrarClienteActionPerformed
-
+        
         MenuPrincipal.getDirectorio().borrarCliente(Long.parseLong(jTxtDni.getText()));
         limpiarCampos();
         llenarListaDni();

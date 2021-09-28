@@ -1,12 +1,12 @@
 package tp6lp1;
 
-
 public class Cliente {
-  private long dni;  
-  private String nombre;
-  private String apellido;
-  private Ciudad ciudad;
-  private String direccion;
+
+    private long dni;
+    private String nombre;
+    private String apellido;
+    private Ciudad ciudad;
+    private String direccion;
 
     public Cliente() {
     }
@@ -18,7 +18,7 @@ public class Cliente {
         this.ciudad = ciudad;
         this.direccion = direccion;
     }
-    
+
     public long getDni() {
         return dni;
     }
@@ -55,10 +55,13 @@ public class Cliente {
         return direccion;
     }
 
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
     @Override
-    public int hashCode() {
-        int hash = 3;
-        return hash;
+    public String toString() {
+        return "Cliente{" + "dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", ciudad=" + ciudad + ", direccion=" + direccion + '}';
     }
 
     @Override
@@ -79,12 +82,10 @@ public class Cliente {
         return true;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
     }
-  
-   @Override
-    public String toString() {
-        return "Cliente{" + "dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", ciudad=" + ciudad + ", direccion=" + direccion + '}';
-    }
+
 }

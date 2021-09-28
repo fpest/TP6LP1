@@ -2,28 +2,26 @@ package tp6lp1.vistas;
 
 import static java.lang.Integer.parseInt;
 import static java.lang.Long.parseLong;
-import java.util.HashSet;
-import java.util.Set;
 import javax.swing.JOptionPane;
 import tp6lp1.Ciudad;
 import tp6lp1.Cliente;
 import tp6lp1.Directorio;
-
 import tp6lp1.clasesdata.CiudadesData;
 
 public class frm_AgregarCliente extends javax.swing.JInternalFrame {
-    
+
     public frm_AgregarCliente() {
         initComponents();
         llenarComboCiudades();
     }
-    private void llenarComboCiudades(){
-      jCbCiudad.removeAll();
+
+    private void llenarComboCiudades() {
+        jCbCiudad.removeAll();
         for (Ciudad ciudad : MenuPrincipal.getcData().obtenerCiudades()) {
-                jCbCiudad.addItem(ciudad);    
-      }
-    } 
-        
+            jCbCiudad.addItem(ciudad);
+        }
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -191,79 +189,61 @@ public class frm_AgregarCliente extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    private boolean validarCampos(){
 
-        try{
-            int modelo=Integer.parseInt(jTxtDni.getText());
-        }catch(NumberFormatException nf){
+    private boolean validarCampos() {
+
+        try {
+            int modelo = Integer.parseInt(jTxtDni.getText());
+        } catch (NumberFormatException nf) {
             JOptionPane.showMessageDialog(null, "Debe ingresar sólo números en el campo DNI.");
             jTxtDni.requestFocus();
             return false;
         };
-
-
-
-//        String val = "[0-9]*";
-//        if (!jTxtDni.getText().matches(val)){
-//            JOptionPane.showMessageDialog(null, "Debe ingresar sólo números en el campo DNI.");
-//            jTxtDni.requestFocus();
-//            return false;
-//        } 
-       
-        try{
-            int modelo=Integer.parseInt(jTxtTelefono.getText());
-        }catch(NumberFormatException nf){
+        try {
+            int modelo = Integer.parseInt(jTxtTelefono.getText());
+        } catch (NumberFormatException nf) {
             JOptionPane.showMessageDialog(null, "Debe ingresar sólo números en el campo Teléfono.");
             jTxtTelefono.requestFocus();
             return false;
         };
 
-
-
-//        if (!jTxtTelefono.getText().matches(val)){
-//            JOptionPane.showMessageDialog(null, "Debe ingresar sólo números en el campo Teléfono.");
-//            jTxtTelefono.requestFocus();
-//            return false;
-//        } 
-//        
-        if (    jTxtDni.getText().equals("") ||
-                jTxtTelefono.getText().equals("") ||
-                jTxtNombre.getText().equals("") ||
-                jTxtApellido.getText().equals("") ||
-                jTxtDomicilio.getText().equals("") ){
+        if (jTxtDni.getText().equals("")
+                || jTxtTelefono.getText().equals("")
+                || jTxtNombre.getText().equals("")
+                || jTxtApellido.getText().equals("")
+                || jTxtDomicilio.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Todos los campos deben estar con datos.");
             return false;
-        }else{
+        } else {
             return true;
         }
     }
 
     private void jBtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnGuardarActionPerformed
 
-        if (validarCampos()){
+        if (validarCampos()) {
             Cliente clienteAgregar = new Cliente();
             clienteAgregar.setDni(parseInt(jTxtDni.getText()));
             clienteAgregar.setApellido(jTxtApellido.getText());
             clienteAgregar.setNombre(jTxtNombre.getText());
             clienteAgregar.setDireccion(jTxtDomicilio.getText());
             clienteAgregar.setCiudad((Ciudad) jCbCiudad.getSelectedItem());
-            
+
             MenuPrincipal.getDirectorio().agregarCliente(clienteAgregar, parseLong(jTxtTelefono.getText()));
             limpiarCampos();
-        
+
         }
     }
 
-    private void limpiarCampos() {        
-            jTxtApellido.setText("");
-            jTxtDni.setText("");
-            jTxtNombre.setText("");
-            jTxtTelefono.setText("");
-            jTxtDomicilio.setText("");
-            jCbCiudad.setSelectedIndex(0);
+    private void limpiarCampos() {
+        jTxtApellido.setText("");
+        jTxtDni.setText("");
+        jTxtNombre.setText("");
+        jTxtTelefono.setText("");
+        jTxtDomicilio.setText("");
+        jCbCiudad.setSelectedIndex(0);
 
-        
+
     }//GEN-LAST:event_jBtnGuardarActionPerformed
 
     private void jBtnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSalirActionPerformed
