@@ -182,7 +182,7 @@ public class frm_BuscarTelefonoPorApellido extends javax.swing.JInternalFrame {
 
         Collection<String> setApellidos = new TreeSet();
         for (Cliente cliente : MenuPrincipal.getDirectorio().getDirectorio().values()) {
-            //setApellidos.add(cliente.getApellido());
+            
             
             if (setApellidos.add(cliente.getApellido())){
                 if (cliente.getApellido().toUpperCase().contains(jTxtApellido.getText().toUpperCase())) {
